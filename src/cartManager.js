@@ -1,5 +1,4 @@
 import fs from "fs";
-import { get } from "http";
 
 let carts = [];
 const pathFile = "./src/data/carts.json";
