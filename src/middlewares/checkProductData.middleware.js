@@ -1,5 +1,5 @@
 import { request, response } from "express";
-import productManager from "../productManager.js"
+import productDao from "../dao/mongoDB/product.dao.js";
 
 export const checkProductData = async (req = request, res = response, next) => {
     try {
@@ -13,8 +13,8 @@ export const checkProductData = async (req = request, res = response, next) => {
             category,
         };
 
-        const products = await productManager.getProducts();
-        const productExists = products.fins((p) => p.code === code);
+        const products = await productDao.getAll();
+        const productExists = products.docs.fins((p) => p.code === code);
         if(productExists) return res.status(400).json({ status: "Error", msg: `El producto con el codigo ${code} ya existe` });
 
         const checkData = Object.values(newProduct).includes(undefined);

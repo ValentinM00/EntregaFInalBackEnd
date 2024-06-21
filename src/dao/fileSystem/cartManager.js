@@ -31,7 +31,7 @@ const addProductToCart = async (cid, pid) =>{
     await getCarts();
     const product = {
         product: pid,
-        quantity: 1,
+        quantity: 1,satisfies
     };
 
     const index = carts.findIndex((cart) => cart.id == cid);
